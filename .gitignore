@@ -1,1 +1,7 @@
 nepanode/local_settings.py
+nepanode/local_settings.pyc
+django-blog-zinnia/*
+django-helpdesk/*
+geonode-social-auth/*
+python-social-auth/*
+
