@@ -53,11 +53,13 @@ While it is helpful to recommit your django project wrapper back to a distribute
 * Admin/Devs should always remember to exclude this file in the .gitignore file in the same folder as the .git
 
     $ nano .gitignore
+    
     /{project}/local_settings.py
 
 save, make sure the file is also removed from git cache
     
     $git rm -f --cache /{{project}}/local_settings.py
+    
     $git status
     
 confirm the file is no longer staged for the next commit or that if it is as "removed"
