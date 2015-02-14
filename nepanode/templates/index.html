@@ -1,0 +1,112 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load base_tags %}
+
+{% block title %} {% trans "Welcome!" %} - {{ block.super }} {% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block middle %}
+   {{ block.super }}
+  {% block hero %}
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="/static/img/carosel1.png" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Welcome to the <strong>NEPAnode</strong></h1>
+              <p class="lead">A web application for collaborating on<br />
+              data, maps, projects designed for non-GIS experts.</p>
+              <a class="btn btn-danger" href="/help/">Get Started</a>
+              <p class="image-credit">Image Credit: NASA</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/static/img/carosel2.png" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Interactive mapping</h1>
+              <p class="lead">You can combine already existing layers with your own data to create<br />
+              powerful interactive maps accessible from all devices.</p>
+              <a class="btn btn-danger" href="/maps/">Explore Maps</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/static/img/carosel3.png" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>GIS data standardization</h1>
+              <p class="lead">GeoNode facilitates data standardization within our organization by providing<br />
+              a clear process for uploading your gis data, compiling metadata and styling.</p>
+              <a class="btn btn-danger" href="/upload/">Upload Layers</a>
+              <p class="image-credit">Photo: WFP/Louis Hamann</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+  {% endblock %}
+  {% block mainbody %}
+  <div class="container">
+    <div class="row">
+    {% with facet_type='home' %}
+     {% facets as facets %}
+      <div class="col-md-4">
+        <p class="text-center"><i class="fa fa-square-o fa-5x rotate-45"></i></p>
+        <h2 class="text-center">{{ facets.layer|default:_("No") }} {% trans "Layer" %}{{ facets.layer|pluralize }}</h2>
+
+        <p class="text-center">{% trans "Click to search for geospatial data published by other users, organizations and public sources. Download data in standard formats." %}</p> 
+        <p class="text-center"><a class="btn btn-default" href="{% url "layer_browse" %}" role="button">{% trans "Explore Layers" %} &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <p class="text-center"><i class="fa fa-map-marker fa-5x"></i></p>
+        <h2 class="text-center">{{ facets.map|default:_("No") }} {% trans "Map" %}{{ facets.map|pluralize }}</h2>
+        <p class="text-center">{% trans "Data is available for browsing, aggregating and styling to generate maps which can be shared publicly or restricted to specific users only." %}</p>
+        <p class="text-center"><a class="btn btn-default" href="{% url "maps_browse" %}" role="button">{% trans "Create maps" %} &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <p class="text-center"><i class="fa fa-cloud-upload fa-5x"></i></p>
+        <h2 class="text-center">{{ facets.user|default:_("No") }} {% trans "User" %}{{ facets.user|pluralize }}</h2>
+        <p class="text-center">{% trans "GeoNode allows registered users to easily upload geospatial data in several formats including shapefile and GeoTiff." %}</p>
+        <p class="text-center"><a class="btn btn-default" href="{% url "layer_upload" %}" role="button">{% trans "Share data" %} &raquo;</a></p>
+      </div>
+    {% endwith %}
+    </div>
+  </div>
+  {% verbatim %}
+  <div ng-app="featured">
+    <div ng-repeat="item in featured">
+      <!--{{ item.title }}-->
+    </div>
+  </div>
+  {% endverbatim %}
+  {% endblock %}
+  
+{% endblock %}
+
+{% block extra_script %}
+{% if DEBUG_STATIC %}
+<script src="{{ STATIC_URL }}lib/js/angular.js"></script>
+{% endif %}
+  <script type="text/javascript">
+    FEATURED_URL = '{% url 'api_dispatch_list' api_name='api' resource_name='featured' %}'
+    'use strict';
+    (function(){  
+      var module = angular.module('featured', []);
+      module.run(function($http, $rootScope){
+        $http.get(FEATURED_URL).success(function(data){
+          $rootScope.featured = data.objects;
+        });
+      });
+    })(); 
+  </script>
+
+{% endblock extra_script %}

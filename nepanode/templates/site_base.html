@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block extra_head %}
-      <link href="{{ STATIC_URL }}/static/css/site_base.css" rel="stylesheet"/>
-      <link href="http://bootswatch.com/united/bootstrap.css" rel="stylesheet"/>
+     <link href="{{ STATIC_URL }}css/site_base.css" rel="stylesheet"/>
+{% endblock %}
+{% block extra_tab %}
+<li>
+ <a href="{% url 'zinnia:sitemap' %}">Pages</a>
+</li>
+<li>
+ <a href="/forms/">Forms</a>
+</li>
 {% endblock %}

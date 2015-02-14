@@ -4,12 +4,47 @@
 This is where you can override the hero area block. You can simply modify the content below or replace it wholesale to meet your own needs. 
 {% endcomment %}
   {% block hero %}
-  <div class="jumbotron">
-    <div class="container">
-      <h1>{% trans "Welcome" %}</h1>
-      <p>{% blocktrans %}GeoNode is an open source platform for sharing geospatial data and maps.{% endblocktrans %}</p>
-      <p>{% blocktrans %}If you have any questions about the software or service, join our <a href="https://groups.google.com/d/forum/geonode-users">mailing list</a>.{% endblocktrans %}</p>
-      <span>{% trans 'Need help?' %} <a href="http://docs.geonode.org/en/latest/tutorials/users/quickstart/index.html">{% trans 'Getting Started' %}</a></span>
-    </div>
-  </div>
+  <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="/static/img/layerslider03.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Welcome to the <strong>NEPAnode</strong></h1>
+              <p class="lead">A web application for collaborating on<br />
+              data, maps, projects designed for non-GIS experts.</p>
+              <a class="btn btn-danger" href="/help/">Get Started</a>
+              <p class="image-credit">Photo: World Food Program</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/static/img/layerslider02.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Interactive mapping</h1>
+              <p class="lead">You can combine already existing layers with your own data to create<br />
+              powerful interactive maps accessible from all devices.</p>
+              <a class="btn btn-danger" href="/maps/">Explore Maps</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/static/img/layerslider01.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>GIS data standardization</h1>
+              <p class="lead">GeoNode facilitates data standardization within our organization by providing<br />
+              a clear process for uploading your gis data, compiling metadata and styling.</p>
+              <a class="btn btn-danger" href="/upload/">Upload Layers</a>
+              <p class="image-credit">Image Credit: NASA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
   {% endblock %}
