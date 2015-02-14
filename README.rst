@@ -50,13 +50,13 @@ Github Considerations
 
 While it is helpful to recommit your django project wrapper back to a distributed version control repository. 
 * It is also important to remember that production instances will store security information in the local_settings.py
-* Admin/Devs should always remember to exclude this file in the .gitignore file in the same folder as the .git
+* Admin/Devs should always remember to exclude this file in the .gitignore file in the same folder as the .git::
 
     $ nano .gitignore
     
     /{project}/local_settings.py
 
-save, make sure the file is also removed from git cache
+save, make sure the file is also removed from git cache::
     
     $ git rm -f --cache /{{project}}/local_settings.py
     
