@@ -58,8 +58,8 @@ While it is helpful to recommit your django project wrapper back to a distribute
 
 save, make sure the file is also removed from git cache
     
-    $git rm -f --cache /{{project}}/local_settings.py
+    $ git rm -f --cache /{{project}}/local_settings.py
     
-    $git status
+    $ git status
     
 confirm the file is no longer staged for the next commit or that if it is as "removed"
