@@ -1,0 +1,52 @@
+
+{% extends "site_base.html" %}
+{% load compress umap_tags i18n %}
+{% load leaflet_storage_tags %}
+{% block title %}{{ map.name }}{% endblock %}
+{% block body_class %}map_detail{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    {% compress css %}
+    <!-- Included CSS Files (Compressed) -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}storage/contrib/css/storage.ui.default.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}umap/umap.css">
+    {% endcompress css %}
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    {% compress js %}
+    <script src="{{ STATIC_URL }}umap/js/autocomplete.js"></script>
+    {% endcompress js %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <body class="{% block body_class %}{% endblock %}">
+    <div id="storage-ui-container"></div>
+    <div id="storage-alert-container"></div>
+    <div id="storage-tooltip-container"></div>
+    {% leaflet_storage_css %}
+    {% leaflet_storage_js locale=locale %}
+    {% if object.share_status != object.PUBLIC %}
+        <meta name="robots" content="noindex">
+    {% endif %}
+{% endblock %}
+{% block bottom_js %}
+      <script type="text/javascript">
+          L.S.on('ui:ready', function () {
+              L.S.AutoComplete.multiSelect('id_editors', {
+                  placeholder: "{% trans 'Type editors nick to add…' %}"
+              });
+              L.S.AutoComplete.select('id_owner', {
+                  placeholder: "{% trans 'Type new owner nick…' %}"
+              });
+          });
+      </script>
+  {% endblock %}
+
+{% block content %}
+    {% block map_init %}
+        {% include "leaflet_storage/map_init.html" %}
+    {% endblock %}
+    {% include "leaflet_storage/map_messages.html" %}
+{% endblock %}
+

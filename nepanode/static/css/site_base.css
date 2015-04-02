@@ -6,12 +6,36 @@ float: right;
 
 /* Carousel base class */
 
+.navbar-collapse.collapse.in {
+display: block!important;
+background: #006600;
+border-width: 9;
+border-color: #006600;
+}
+
+.btn:hover {
+background: #333333;
+color: #fff;
+}
+
 .html {
 font-weight: bold;
 }
 
-.body {
+body {
 font-family: Lato,"Helvetica Neue",Helvetica,Arial,sans-serif;
+background: #fff;
+background-color: #fff;
+}
+
+.body.home {
+background: #fff;
+background-color: #fff;
+}
+
+footer {
+background: #fff;
+background-color: #fff;
 }
 
 #wrap {
@@ -137,6 +161,14 @@ color: #006600
 }
 
 a:hover {
+color: #006600;
+}
+
+#sort .selected {
+color: #006600;
+}
+
+.pagination>li>a, .pagination>li>span, .pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus{
 color: #006600;
 }
 
