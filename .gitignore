@@ -4,4 +4,4 @@ django-blog-zinnia/*
 django-helpdesk/*
 geonode-social-auth/*
 python-social-auth/*
-
+nepanode/wsgi.py

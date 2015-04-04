@@ -33,7 +33,7 @@
     <ul class="login-grid block-grid">
         {% for name in backends.backends %}
                 <a class="col-md-2 btn btn-default" name="{{ backend|backend_class }}" href="{% url "social:begin" backend=name %}">
-                  <i class="fa fa-{{ name|icon_name }}"></i>
+                  <i class="fa fa-{{ name.replace('-oauth2','')|icon_name }}"></i>
                   {{ backend|backend_name }}
                 </a>
         {% endfor %}
