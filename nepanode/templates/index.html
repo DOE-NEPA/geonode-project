@@ -8,7 +8,7 @@
 {% block body_class %}home{% endblock %}
 
 {% block middle %}
-   {{ block.super }}
+  {{ block.super }}
   {% block hero %}
     <!-- Carousel
     ================================================== -->
@@ -18,8 +18,8 @@
           <img src="/static/img/carosel1.png" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Welcome to the <strong>NEPAnode</strong></h1>
-              <p class="lead">A web application for collaborating on<br />
+              <h1>Welcome to <strong>NEPAnode</strong></h1>
+              <p class="bold">A web application for collaborating on<br />
               data, maps, projects designed for non-GIS experts.</p>
               <a class="btn btn-danger" href="/help/">Get Started</a>
               <p class="image-credit">Image Credit: NASA</p>
@@ -43,49 +43,118 @@
             <div class="carousel-caption">
               <h1>GIS data standardization</h1>
               <p class="lead">GeoNode facilitates data standardization within our organization by providing<br />
-              a clear process for uploading your gis data, compiling metadata and styling.</p>
+              a clear process for uploading your data, its metadata, and documents</p>
               <a class="btn btn-danger" href="/upload/">Upload Layers</a>
               <p class="image-credit">Photo: WFP/Louis Hamann</p>
             </div>
           </div>
         </div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      <h1><a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a></h1>
+      <h1><a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a></h1>
     </div><!-- /.carousel -->
   {% endblock %}
   {% block mainbody %}
-  <div class="container">
-    <div class="row">
-    {% with facet_type='home' %}
-     {% facets as facets %}
-      <div class="col-md-4">
-        <p class="text-center"><i class="fa fa-square-o fa-5x rotate-45"></i></p>
-        <h2 class="text-center">{{ facets.layer|default:_("No") }} {% trans "Layer" %}{{ facets.layer|pluralize }}</h2>
-
-        <p class="text-center">{% trans "Click to search for geospatial data published by other users, organizations and public sources. Download data in standard formats." %}</p> 
-        <p class="text-center"><a class="btn btn-default" href="{% url "layer_browse" %}" role="button">{% trans "Explore Layers" %} &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <p class="text-center"><i class="fa fa-map-marker fa-5x"></i></p>
-        <h2 class="text-center">{{ facets.map|default:_("No") }} {% trans "Map" %}{{ facets.map|pluralize }}</h2>
-        <p class="text-center">{% trans "Data is available for browsing, aggregating and styling to generate maps which can be shared publicly or restricted to specific users only." %}</p>
-        <p class="text-center"><a class="btn btn-default" href="{% url "maps_browse" %}" role="button">{% trans "Create maps" %} &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <p class="text-center"><i class="fa fa-cloud-upload fa-5x"></i></p>
-        <h2 class="text-center">{{ facets.user|default:_("No") }} {% trans "User" %}{{ facets.user|pluralize }}</h2>
-        <p class="text-center">{% trans "GeoNode allows registered users to easily upload geospatial data in several formats including shapefile and GeoTiff." %}</p>
-        <p class="text-center"><a class="btn btn-default" href="{% url "layer_upload" %}" role="button">{% trans "Share data" %} &raquo;</a></p>
-      </div>
-    {% endwith %}
-    </div>
+  <p>
+  <br>
+  <div class="panel panel-success">
+  <div class="panel-heading">
+    <h1 class="panel-title text-center">Tools and Services</h1>
   </div>
-  {% verbatim %}
-  <div ng-app="featured">
-    <div ng-repeat="item in featured">
-      <!--{{ item.title }}-->
+  <div class="panel-body">
+  <section id="t-cards">
+    <div class="container">
+        <div class="row">
+             <div class="col-sm-6 col-md-3">
+                <div class="panel panel-default panel-card">
+                    <div class="panel-heading">
+                        <img src="http://i.imgur.com/ehI61RL.jpg" />
+                    </div>
+                    <div class="panel-figure">
+                        <img class="img-responsive img-circle" src="uploaded/pictogram/Blank_Green_USmap.png" />
+                    </div>
+                    <div class="panel-body text-center">
+                        <h3 class="panel-header"><a href="/accounts/signup/">NEPAnode Site</a></h3>
+                        <small>Portal for Public Data and Documents</small>
+                    </div>
+                </div>
+             </div>
+             <div class="col-sm-6 col-md-3">
+                <div class="panel panel-default panel-card">
+                    <div class="panel-heading">
+                        <img src="http://i.imgur.com/r5on6kD.png" />
+                    </div>
+                    <div class="panel-figure">
+                        <img class="img-responsive img-circle" src="/uploaded/pictogram/ProjectsSite_2_2.svg" />
+                    </div>
+                    <div class="panel-body text-center">
+                        <h3 class="panel-header"><a href="http://projects.nepanode.anl.gov">Projects Site</a></h2>
+                        <small>NEPAnode's Project Site allows users and groups to upload, permission, and version control a project's data and documents
+                    </div>
+                </div>   
+             </div>
+             <div class="col-sm-6 col-md-3">
+                <div class="panel panel-default panel-card">
+                    <div class="panel-heading">
+                        <img class="img-rounded" src="http://www.esri.com/news/arcuser/1010/graphics/flood_2b_lg.jpg" />
+                    </div>
+                    <div class="panel-figure">
+                        <img class="img-responsive img-circle" src="http://54.197.226.56/uploaded/pictogram/MapWarper.svg" />
+                    </div>
+                    <div class="panel-body text-center">
+                        <h3 class="panel-header"><a href="http://warp.nepanode.anl.gov">MapWarper Site</a></h3>
+                        <small>Upload and Georeference Static Maps then Search for NEPA Projects and Reference Maps by Text, Keyword, or Location</small>
+                    </div>
+                </div>
+              </div>   
+              <div class="col-sm-6 col-md-3">
+        	<div class="panel panel-default panel-card">
+                    <div class="panel-heading">
+                        <img src="https://camo.githubusercontent.com/866819f2583e8fd24676c3d0b84ad2a10ce9d313/687474703a2f2f692e696d6775722e636f6d2f61306d53724a762e6a7067" />
+                    </div>
+                    <div class="panel-figure">
+                        <img class="img-responsive img-circle" src="/uploaded/pictogram/GeoJSON_Icon_1.svg" />
+                    </div>
+                    <div class="panel-body text-center">
+                        <h3 class="panel-header"><a href="/geojson/map/new">GeoJSON Editor</a></h3>
+                        <small>Create, Style, Present your own Map and Data from Scratch. Use over ~15 provided Basemaps or <a href="http://warp.nepanode.anl.gov">MapWarper</a> maps as a Custom Basemap</small>
+                    </div>
+            	</div>   
+    	      </div>
+       </div>
     </div>
+  </section>
+  </div>
+  </div>     
+  {% verbatim %}
+  <p>
+  <div class="panel panel-success">
+  <div class="panel-heading">
+    <h1 class="panel-title text-center">Featured Content</h1>
+  </div>
+  <div class="panel-body">
+  <section id="t-cards">
+  <div class="container">
+  <div ng-app="featured">
+  <div ng-repeat="item in featured">
+             <div class="col-sm-6 col-md-3">
+                <div class="panel panel-default panel-card">
+                    <div class="panel-heading">
+                        <img class="img-rounded" src="{{ item.thumbnail_url }}" />
+                    </div>
+                    <div class="panel-figure">
+                        <img class="img-responsive img-circle" src="uploaded/pictogram/Blank_Green_USmap.png" />
+                    </div>
+                    <div class="panel-body text-center">
+                        <h6 class="panel-header"><a href="{{ item.detail_url }}">{{ item.title }}</a></h6>
+                        <small>{{ item.abstract }}</small> 
+                    </div>
+                </div>
+             </div>
+  </div> 
+  </div>
+  </div>
+  </section>
   </div>
   {% endverbatim %}
   {% endblock %}
@@ -106,7 +175,7 @@
           $rootScope.featured = data.objects;
         });
       });
-    })(); 
+    })();  
   </script>
 
 {% endblock extra_script %}

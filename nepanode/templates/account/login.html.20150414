@@ -1,3 +1,4 @@
+# templates/account/login.html
 {% extends "site_base.html" %}
 
 {% load url from future %}
@@ -7,14 +8,12 @@
 {% block head_title %}{% trans "Log in" %}{% endblock %}
 
 {% block body_outer %}
-<!-- /home/ubuntu/nepanode/nepanode/nepanode/templates/account/login.html -->
-
 <div class="page-header">
   <h2>{% trans "Log in to an existing account" %}</h2>
 </div>
 <div class="row">
   <div class="col-md-8">
-    <form role="form" method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+    <form role="form" method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="mul$
       {% csrf_token %}
       {{ form|as_bootstrap }}
       {% if redirect_field_value %}
@@ -27,21 +26,19 @@
       <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
     </form>
   </div>
+{% endblock %}
+{% block body_inner %}
 </div>
-<!--
-<h3>{% trans "or use Social Registration" %}</h3>
+<h5>{% trans "or use Social Registration" %}</h5>
 <div>
     <ul class="login-grid block-grid">
         {% for name in backends.backends %}
-            <li>
-                <a class="col-md-2 btn btn-default" name="{{ name }}" href="{% url "social:begin" backend=name %}">
-                  <i class="fa fa-{{ name }}"></i>
-                  {{ name }}
+                <a class="col-md-2 btn btn-default" name="{{ backend|backend_class }}" href="{% url "social:begin" backend=name %}">
+                  <i class="fa fa-{{ name.replace('-oauth2','')|icon_name }}"></i>
+                  {{ backend|backend_name }}
                 </a>
-            </li>
         {% endfor %}
     </ul>
 </div>
--->
 {% endblock %}
 
