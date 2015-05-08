@@ -34,10 +34,11 @@
     <ul class="login-grid block-grid">
         {% for name in backends.backends %}
             <li>
-                <a class="col-md-2 btn btn-default" name="{{ name }}" href="{% url "social:begin" backend=name %}">
-                  <i class="fa fa-{{ name }}"></i>
-                  {{ name }}
-                </a>
+                <h4 style="text-align: left;">Or</h4>
+                <div><a class="btn btn-block btn-social btn-github"      href="{% url 'social:begin' "github"   %}" title="Github"   ><i class="fa fa-github"     ></i> Sign in with Github   </a></div><br/>
+                <div><a class="btn btn-block btn-social btn-google-plus" href="{% url 'social:begin' "google-oauth2"   %}" title="Google+"  ><i class="fa fa-google-plus"></i> Sign in with Google+  </a></div><br/>
+                <div><a class="btn btn-block btn-social btn-linkedin"    href="{% url 'social:begin' "linkedin-oauth2" %}" title="Linked in"><i class="fa fa-linkedin"   ></i> Sign in with Linked-In</a></div><br/>
+                <!--<div><a class="btn btn-block btn-social btn-twitter"     href="{% url 'social:begin' "twitter"         %}" title="Twitter"  ><i class="fa fa-twitter"    ></i> Sign in with Twitter  </a></div>--> 
             </li>
         {% endfor %}
     </ul>

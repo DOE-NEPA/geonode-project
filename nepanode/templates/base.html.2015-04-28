@@ -18,7 +18,6 @@
       {% endif %}
       <link href="{{ STATIC_URL }}geonode/css/ext-compatibility.css" rel="stylesheet" />
       <link href="{{ STATIC_URL }}geonode/css/base.css" rel="stylesheet" />
-
       <style type="text/css">[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}</style>
       {% block extra_head %}
       {% endblock %}
@@ -33,10 +32,6 @@
         }
       </style>
     <![endif]-->
-
-      <!-- added by Don Bales on 2015-04-28 to enable social auth -->
-      <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-social.css" rel="stylesheet"/>
-
   </head>
   
   <body class="{% block body_class %}{% endblock %}">
@@ -51,29 +46,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="{% url "home" %}" class="btn btn-info" role="button"><i class="fa fa-home"></i></a>
+          <a class="navbar-brand" href="{% url "home" %}">GeoNode</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             {% block tabs %}
             <li id="nav_layers">
-              <a href="{% url "layer_browse" %}" class="btn btn-info" role="button">{% trans "Layers" %}</a>
+              <a href="{% url "layer_browse" %}">{% trans "Layers" %}</a>
             </li>
             <li id="nav_maps">
-              <a class="btn btn-info" role="button" href="{% url "maps_browse" %}">{% trans "Maps" %}</a>
+              <a href="{% url "maps_browse" %}">{% trans "Maps" %}</a>
             </li>
             <li id="nav_documents">
-              <a class="btn btn-info" role="button" href="{% url "document_browse" %}">{% trans "Documents" %}</a>
+              <a href="{% url "document_browse" %}">{% trans "Documents" %}</a>
             </li>
             {% block extra_tab %}
             {% endblock %}
-            {% comment %}
             <li id="nav_people">
-              <a class="btn btn-info" role="button" href="{% url "profile_browse" %}">{% trans "People" %}</a>
+              <a href="{% url "profile_browse" %}">{% trans "People" %}</a>
             </li>
-            {% endcomment %}
             <li id="nav_groups">
-              <a class="btn btn-info" role="button" href="{% url "group_list" %}">{% trans "Groups" %}</a>
+              <a href="{% url "group_list" %}">{% trans "Groups" %}</a>
             </li>
             {% endblock %}
           </ul>
@@ -187,16 +180,9 @@
               <label class="checkbox">
                 <input type="checkbox" /> {% trans "Remember Me" %}
               </label>
-              <button type="submit" class="btn btn-primary btn-block">{% trans "Sign in" %}</button>            
             </div>
             <div class="modal-footer">
-              <div>
-                <h4 style="text-align: center;">Or</h4>
-                <div><a class="btn btn-block btn-social btn-github"      href="{% url 'social:begin' "github-oauth2"   %}" title="Github"   ><i class="fa fa-github"     ></i> Sign in with Github   </a></div><br/>
-                <div><a class="btn btn-block btn-social btn-google-plus" href="{% url 'social:begin' "google-oauth2"   %}" title="Google+"  ><i class="fa fa-google-plus"></i> Sign in with Google+  </a></div><br/>
-                <div><a class="btn btn-block btn-social btn-linkedin"    href="{% url 'social:begin' "linkedin-oauth2" %}" title="Linked in"><i class="fa fa-linkedin"   ></i> Sign in with Linked-In</a></div><br/>
-                <!--<div><a class="btn btn-block btn-social btn-twitter"     href="{% url 'social:begin' "twitter"         %}" title="Twitter"  ><i class="fa fa-twitter"    ></i> Sign in with Twitter  </a></div>-->
-              </div>
+              <button type="submit" class="btn btn-primary btn-block">{% trans "Sign in" %}</button>
             </div>
           </form>
         </div>

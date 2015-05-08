@@ -8,8 +8,7 @@
 
 {% block body %}
 <div class="row">
-  <!--<div class="col-md-8">-->
-  <div class="col-md-4" style="float: left;" >
+  <div class="col-md-8">
   {% if REGISTRATION_OPEN %}
     <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" class="form-horizontal"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
       <legend>{% trans "Sign up" %}</legend>
@@ -24,15 +23,6 @@
         </div>
       </fieldset>
     </form>
-
-              <div>
-                <h4 style="text-align: left;">Or</h4>
-                <div><a class="btn btn-block btn-social btn-github"      href="{% url 'social:begin' "github"   %}" title="Github"   ><i class="fa fa-github"     ></i> Sign in with Github   </a></div><br/>
-                <div><a class="btn btn-block btn-social btn-google-plus" href="{% url 'social:begin' "google-oauth2"   %}" title="Google+"  ><i class="fa fa-google-plus"></i> Sign in with Google+  </a></div><br/>
-                <div><a class="btn btn-block btn-social btn-linkedin"    href="{% url 'social:begin' "linkedin-oauth2" %}" title="Linked in"><i class="fa fa-linkedin"   ></i> Sign in with Linked-In</a></div><br/>
-                <!--<div><a class="btn btn-block btn-social btn-twitter"     href="{% url 'social:begin' "twitter"         %}" title="Twitter"  ><i class="fa fa-twitter"    ></i> Sign in with Twitter  </a></div>-->
-              </div>
-
     {% else %}
     <p>{% trans "Sorry, registrations are not open at this time." %}</p>
     {% endif %}
@@ -50,3 +40,4 @@
         });
     </script>
 {% endblock %}
+

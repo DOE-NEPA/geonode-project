@@ -4,12 +4,12 @@
 {% endblock %}	
 {% block extra_tab %}
 <li>
- <a href="/geojson/map/new/">GeoJSON</a>
+ <a class="btn btn-info" role="button" href="/geojson/map/new/">GeoJSON</a>
 </li>
 <li>
- <a href="{% url 'zinnia:sitemap' %}">Blog</a>
+ <a class="btn btn-info" role="button" href="{% url 'zinnia:sitemap' %}">Blog</a>
 </li>
 <li>
- <a href="/helpdesk/">Helpdesk</a>
+ <a class="btn btn-info" role="button" href="{% url 'zinnia:sitemap' %}">Helpdesk</a>
 </li>
 {% endblock %}

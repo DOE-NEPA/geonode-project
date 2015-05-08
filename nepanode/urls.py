@@ -35,8 +35,6 @@ urlpatterns = patterns('',
        name='home'),
    # python-social-auth
    url(r'', include('social.apps.django_app.urls', namespace='social')),
-   url(r'^account/signup/',
-       TemplateView.as_view(template_name='signup.html'),
-       name='socialauth'),
+   #url(r'^account/signup/', TemplateView.as_view(template_name='signup.html'), name='socialauth'),
 ) + urlpatterns
 
