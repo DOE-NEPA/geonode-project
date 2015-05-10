@@ -9,6 +9,7 @@ django-helpdesk/*
 geonode-social-auth/*
 python-social-auth/*
 nepanode/wsgi.py.4-14-15-copy
+nepanode/local_settings.py.2015-04-28
 build/*
 django-leaflet-storage/*
 junk/*
